@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfdhygdkkavxc"]
+
+[ext_resource type="Script" path="res://scripts/PerkEffectEasyOne.gd" id="1_70d31"]
+[ext_resource type="PackedScene" uid="uid://haafhe3cauwr" path="res://scenes/warn1.tscn" id="2_li3hs"]
+
+[node name="PerkEffectEasyOne" type="Node"]
+script = ExtResource("1_70d31")
+warningPrefab = ExtResource("2_li3hs")

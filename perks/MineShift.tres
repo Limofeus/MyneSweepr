@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PerkResource" load_steps=2 format=3 uid="uid://b2ncu5t14ntcp"]
+
+[ext_resource type="Script" path="res://scripts/PerkResource.gd" id="2_x3xfk"]
+
+[resource]
+script = ExtResource("2_x3xfk")
+perkLevel = -1
+oneTime = true
+perkName = "MINE SHIFT"
+perkDescription = "Some mines will shift half a cell in a random direction"
+perkTag = "mineShift"
+reqPerkTags = Array[String]([])

@@ -1,0 +1,324 @@
+[gd_scene load_steps=25 format=3 uid="uid://00ptyd4reagg"]
+
+[ext_resource type="Script" path="res://scripts/GameLogic.gd" id="1_6wla6"]
+[ext_resource type="Script" path="res://scripts/CameraMovement.gd" id="1_eqsfc"]
+[ext_resource type="Script" path="res://scripts/MinefieldLogic.gd" id="1_n5xv5"]
+[ext_resource type="Script" path="res://scripts/PlayerStats.gd" id="2_5jpmv"]
+[ext_resource type="Script" path="res://scripts/PerkResource.gd" id="2_evk4m"]
+[ext_resource type="Script" path="res://scripts/MineGeneration.gd" id="2_jmqn1"]
+[ext_resource type="Script" path="res://scripts/FieldNumbersGenerator.gd" id="3_metbh"]
+[ext_resource type="PackedScene" uid="uid://dfj7we7yglwwe" path="res://obscurifiers/mine_num_simple.tscn" id="5_k8pct"]
+[ext_resource type="PackedScene" uid="uid://chijdx2hqfbhc" path="res://obscurifiers/mine_num_simple_math.tscn" id="6_kriqg"]
+[ext_resource type="PackedScene" uid="uid://cydpiuf18visk" path="res://obscurifiers/mine_num_square_equation.tscn" id="7_d1v3a"]
+[ext_resource type="Script" path="res://scripts/PerkSelectScreen.gd" id="11_7yij4"]
+[ext_resource type="PackedScene" uid="uid://dbkewrpyc5wfq" path="res://scenes/perkbutton.tscn" id="11_f67lp"]
+
+[sub_resource type="Resource" id="Resource_7lnki"]
+script = ExtResource("2_evk4m")
+perkLevel = 1
+oneTime = false
+perkName = "+1A"
+perkDescription = "+1A"
+perkTag = ""
+
+[sub_resource type="Resource" id="Resource_i5jn5"]
+script = ExtResource("2_evk4m")
+perkLevel = 1
+oneTime = false
+perkName = "+1B"
+perkDescription = "+1B"
+perkTag = ""
+
+[sub_resource type="Resource" id="Resource_j6j7c"]
+script = ExtResource("2_evk4m")
+perkLevel = 1
+oneTime = false
+perkName = "+1C"
+perkDescription = "+1C"
+perkTag = ""
+
+[sub_resource type="Resource" id="Resource_jxdru"]
+script = ExtResource("2_evk4m")
+perkLevel = 1
+oneTime = false
+perkName = "+1D"
+perkDescription = "+1D"
+perkTag = ""
+
+[sub_resource type="Resource" id="Resource_na3lf"]
+script = ExtResource("2_evk4m")
+perkLevel = 1
+oneTime = false
+perkName = "+1E"
+perkDescription = ""
+perkTag = ""
+
+[sub_resource type="Resource" id="Resource_sbrsh"]
+script = ExtResource("2_evk4m")
+perkLevel = -1
+oneTime = false
+perkName = "-1A"
+perkDescription = ""
+perkTag = ""
+
+[sub_resource type="Resource" id="Resource_avd40"]
+script = ExtResource("2_evk4m")
+perkLevel = -1
+oneTime = false
+perkName = "-1B"
+perkDescription = ""
+perkTag = ""
+
+[sub_resource type="Resource" id="Resource_q4r7f"]
+script = ExtResource("2_evk4m")
+perkLevel = -1
+oneTime = false
+perkName = "-1C"
+perkDescription = ""
+perkTag = ""
+
+[sub_resource type="Resource" id="Resource_1hhct"]
+script = ExtResource("2_evk4m")
+perkLevel = -1
+oneTime = false
+perkName = "-1D"
+perkDescription = ""
+perkTag = ""
+
+[sub_resource type="Resource" id="Resource_ludrx"]
+script = ExtResource("2_evk4m")
+perkLevel = 2
+oneTime = false
+perkName = "+2A"
+perkDescription = ""
+perkTag = ""
+
+[sub_resource type="Resource" id="Resource_tn7t2"]
+script = ExtResource("2_evk4m")
+perkLevel = 2
+oneTime = false
+perkName = "+2B"
+perkDescription = ""
+perkTag = ""
+
+[sub_resource type="Resource" id="Resource_qmg3m"]
+script = ExtResource("2_evk4m")
+perkLevel = -2
+oneTime = false
+perkName = "-2A"
+perkDescription = ""
+perkTag = ""
+
+[node name="Main" type="Node"]
+
+[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("perkSelectScreen")]
+script = ExtResource("1_6wla6")
+targetPerkPairLevel = 2
+perks = Array[ExtResource("2_evk4m")]([SubResource("Resource_7lnki"), SubResource("Resource_i5jn5"), SubResource("Resource_j6j7c"), SubResource("Resource_jxdru"), SubResource("Resource_na3lf"), SubResource("Resource_sbrsh"), SubResource("Resource_avd40"), SubResource("Resource_q4r7f"), SubResource("Resource_1hhct"), SubResource("Resource_ludrx"), SubResource("Resource_tn7t2"), SubResource("Resource_qmg3m")])
+perkSelectScreen = NodePath("../UserInterface/PerkSelect/PerkSelectScreen")
+
+[node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("healthLabel", "timerLabel", "mineCountLabel", "healthProgressBar")]
+script = ExtResource("2_5jpmv")
+healthLabel = NodePath("../UserInterface/TopPanel/ProgressBar/Health")
+timerLabel = NodePath("../UserInterface/TopPanel/Timer")
+mineCountLabel = NodePath("../UserInterface/TopPanel/MineCount")
+healthProgressBar = NodePath("../UserInterface/TopPanel/ProgressBar")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(730, 429)
+
+[node name="CameraMovement" type="Node" parent="Camera2D"]
+script = ExtResource("1_eqsfc")
+moveSpeed = 400.0
+dragSence = 1.0
+zoomSence = 0.05
+
+[node name="MinefieldHolder" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MinefieldLogic" type="Node" parent="MinefieldHolder" node_paths=PackedStringArray("mineGeneration", "fieldNumberGenerator", "playerStats", "backgroundContainer", "buttonContainer")]
+script = ExtResource("1_n5xv5")
+fieldHieght = 10
+fieldWidth = 10
+mineCount = 10.0
+mineGeneration = NodePath("../MineGeneration")
+fieldNumberGenerator = NodePath("../FieldNumbersGenerator")
+playerStats = NodePath("../../PlayerStats")
+backgroundContainer = NodePath("../BackgroundContainer")
+buttonContainer = NodePath("../ButtonContainer")
+
+[node name="MineGeneration" type="Node" parent="MinefieldHolder" node_paths=PackedStringArray("minefieldLogic", "hiddenLayer")]
+script = ExtResource("2_jmqn1")
+minefieldLogic = NodePath("../MinefieldLogic")
+hiddenLayer = NodePath("../HiddenLayer")
+
+[node name="FieldNumbersGenerator" type="Node" parent="MinefieldHolder" node_paths=PackedStringArray("backgroundContainer", "minefieldLogic")]
+script = ExtResource("3_metbh")
+backgroundContainer = NodePath("../BackgroundContainer")
+minefieldLogic = NodePath("../MinefieldLogic")
+
+[node name="MineNumSimple" parent="MinefieldHolder/FieldNumbersGenerator" instance=ExtResource("5_k8pct")]
+
+[node name="MineNumSimpleMath" parent="MinefieldHolder/FieldNumbersGenerator" instance=ExtResource("6_kriqg")]
+
+[node name="MineNumSquareEquation" parent="MinefieldHolder/FieldNumbersGenerator" instance=ExtResource("7_d1v3a")]
+
+[node name="BackgroundContainer" type="GridContainer" parent="MinefieldHolder"]
+layout_mode = 0
+offset_right = 308.0
+offset_bottom = 308.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="HiddenLayer" type="Control" parent="MinefieldHolder"]
+texture_filter = 4
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ButtonContainer" type="GridContainer" parent="MinefieldHolder"]
+layout_mode = 0
+offset_right = 308.0
+offset_bottom = 308.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+
+[node name="TopPanel" type="Panel" parent="UserInterface"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="UserInterface/TopPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -25.0
+offset_right = 425.0
+offset_bottom = 25.0
+grow_vertical = 2
+max_value = 3.0
+value = 2.23
+show_percentage = false
+
+[node name="Health" type="Label" parent="UserInterface/TopPanel/ProgressBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -29.0
+offset_right = 152.0
+offset_bottom = 29.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "2.75/10"
+vertical_alignment = 1
+
+[node name="Timer" type="Label" parent="UserInterface/TopPanel"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -13.0
+offset_right = 24.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 60
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MineCount" type="Label" parent="UserInterface/TopPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -193.0
+offset_top = -26.0
+offset_right = -25.0
+offset_bottom = 26.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "MINES: 10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PerkSelect" type="ColorRect" parent="UserInterface"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.745098)
+
+[node name="PerkSelectScreen" type="Node" parent="UserInterface/PerkSelect" node_paths=PackedStringArray("perkButtonContainer")]
+script = ExtResource("11_7yij4")
+perkButtonContainer = NodePath("../HBoxContainer")
+perkButtonPreffab = ExtResource("11_f67lp")
+
+[node name="Label" type="Label" parent="UserInterface/PerkSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.5
+offset_top = -199.107
+offset_right = 247.5
+offset_bottom = -100.892
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "LEVEL COMPLETE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UserInterface/PerkSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.5
+offset_top = 126.0
+offset_right = 247.5
+offset_bottom = 224.215
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "Select a perk"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/PerkSelect"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1

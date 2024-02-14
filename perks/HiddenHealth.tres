@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PerkPlayerStats" load_steps=2 format=3 uid="uid://cgmlwx3aqscdx"]
+
+[ext_resource type="Script" path="res://scripts/PerkPlayerStats.gd" id="1_b7r0b"]
+
+[resource]
+script = ExtResource("1_b7r0b")
+armorAdd = 0.0
+maxHpAdd = 0.0
+heal = 0.0
+perkLevel = -1
+oneTime = true
+perkName = "HIDDEN HEALTH"
+perkDescription = "Hides your current and maximum health points"
+perkTag = "hideHealth"
+reqPerkTags = Array[String]([])

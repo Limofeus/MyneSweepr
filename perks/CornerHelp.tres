@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkResource" load_steps=3 format=3 uid="uid://bcp7x8fab3632"]
+
+[ext_resource type="PackedScene" uid="uid://tiapw120eqq" path="res://perkEffectPrefabs/perk_effect_corner_help.tscn" id="1_cre57"]
+[ext_resource type="Script" path="res://scripts/PerkResource.gd" id="2_0x433"]
+
+[resource]
+script = ExtResource("2_0x433")
+perkLevel = 1
+oneTime = true
+perkName = "CORNER HELP"
+perkDescription = "Shows mine count in the corner cells for tough to solve corners"
+perkTag = ""
+reqPerkTags = Array[String]([])
+onStartEffectScene = ExtResource("1_cre57")

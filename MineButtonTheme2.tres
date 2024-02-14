@@ -1,0 +1,53 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dswwyy76tc36w"]
+
+[ext_resource type="Texture2D" uid="uid://c1yncxgtqsed1" path="res://sprites/buttonTexture.png" id="1_4la56"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkcac"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlsq1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.184314, 0.184314, 0.184314, 1)
+border_blend = true
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bmld7"]
+texture = ExtResource("1_4la56")
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+modulate_color = Color(0.784314, 0.784314, 0.784314, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0hfhj"]
+texture = ExtResource("1_4la56")
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i0rwd"]
+texture = ExtResource("1_4la56")
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+modulate_color = Color(0.588235, 0.588235, 0.588235, 1)
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxFlat_vkcac")
+Button/styles/focus = SubResource("StyleBoxFlat_hlsq1")
+Button/styles/hover = SubResource("StyleBoxTexture_bmld7")
+Button/styles/normal = SubResource("StyleBoxTexture_0hfhj")
+Button/styles/pressed = SubResource("StyleBoxTexture_i0rwd")

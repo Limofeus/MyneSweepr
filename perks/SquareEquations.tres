@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkResource" load_steps=3 format=3 uid="uid://cp51hljsb3p4"]
+
+[ext_resource type="PackedScene" uid="uid://cydpiuf18visk" path="res://obscurifiers/mine_num_square_equation.tscn" id="1_ht1y5"]
+[ext_resource type="Script" path="res://scripts/PerkResource.gd" id="2_vtuio"]
+
+[resource]
+script = ExtResource("2_vtuio")
+perkLevel = -1
+oneTime = true
+perkName = "SQUARE EQUATIONS"
+perkDescription = "Some cells will have square equation with two viable solutions instead of the number"
+perkTag = ""
+reqPerkTags = Array[String](["simpleMath"])
+obscurifierScene = ExtResource("1_ht1y5")

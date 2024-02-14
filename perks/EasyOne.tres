@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkResource" load_steps=3 format=3 uid="uid://drjyajcow8nkn"]
+
+[ext_resource type="PackedScene" uid="uid://bfdhygdkkavxc" path="res://perkEffectPrefabs/perk_effect_easy_one.tscn" id="1_6lj7e"]
+[ext_resource type="Script" path="res://scripts/PerkResource.gd" id="1_mox71"]
+
+[resource]
+script = ExtResource("1_mox71")
+perkLevel = 1
+oneTime = true
+perkName = "EASY ONE"
+perkDescription = "One dangerous cell will be revealed at the start of each level"
+perkTag = ""
+reqPerkTags = Array[String]([])
+onStartEffectScene = ExtResource("1_6lj7e")

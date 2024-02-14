@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bufcq7y2013f2"]
+
+[ext_resource type="Texture2D" uid="uid://d15xcv0jbw02t" path="res://sprites/explosionParticle.png" id="1_ff2jy"]
+[ext_resource type="Script" path="res://scripts/EffectDelete.gd" id="2_rywbw"]
+
+[sub_resource type="Curve" id="Curve_2aerp"]
+_data = [Vector2(0, 0.335591), 0.0, 0.0, 0, 0, Vector2(0.97205, 0), -1.03961, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ngj3k"]
+offsets = PackedFloat32Array(0, 0.57483, 1)
+colors = PackedColorArray(0.953125, 0.653073, 0.156337, 1, 1, 0.557729, 0.399047, 0.513726, 1, 0.483333, 0, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+position = Vector2(653, 903)
+scale = Vector2(0.5, 0.5)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_ff2jy")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 700.0
+scale_amount_curve = SubResource("Curve_2aerp")
+color = Color(1.183, 0.905, 0.836, 1)
+color_ramp = SubResource("Gradient_ngj3k")
+
+[node name="EffectDelete" type="Node" parent="."]
+script = ExtResource("2_rywbw")
+
+[connection signal="finished" from="." to="EffectDelete" method="DeleteEffect"]

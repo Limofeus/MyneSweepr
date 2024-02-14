@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://w4kajpkv5yaf"]
+
+[ext_resource type="Texture2D" uid="uid://emney0tcl4sv" path="res://sprites/mine.png" id="1_l1xh3"]
+
+[node name="mine" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.054902, 0.054902, 0.054902, 1)
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("1_l1xh3")
+expand_mode = 1

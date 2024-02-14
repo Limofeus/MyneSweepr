@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkPlayerStats" load_steps=2 format=3 uid="uid://dnc2d2xw3hg0w"]
+
+[ext_resource type="Script" path="res://scripts/PerkPlayerStats.gd" id="1_noxkq"]
+
+[resource]
+script = ExtResource("1_noxkq")
+armorAdd = 0.0
+maxHpAdd = 0.0
+heal = 999.0
+perkLevel = 1
+oneTime = true
+perkName = "HEAL UP"
+perkDescription = "Heals all HP"
+perkTag = ""
