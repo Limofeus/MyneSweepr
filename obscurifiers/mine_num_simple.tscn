@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfj7we7yglwwe"]
+
+[ext_resource type="Script" path="res://scripts/MineNumSimple.gd" id="1_fte83"]
+
+[node name="MineNumSimple" type="Node"]
+script = ExtResource("1_fte83")

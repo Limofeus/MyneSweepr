@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbkewrpyc5wfq"]
+
+[ext_resource type="Script" path="res://scripts/PerkVisualSetup.gd" id="1_1e6lt"]
+
+[node name="PerkButton" type="Control"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -60.0
+offset_right = 40.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PerkVisualSetup" type="Node" parent="." node_paths=PackedStringArray("buffLabel", "debuffLabel")]
+script = ExtResource("1_1e6lt")
+buffLabel = NodePath("../Button/VBoxContainer/BuffLabel")
+debuffLabel = NodePath("../Button/VBoxContainer/DebuffLabel")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="BuffLabel" type="Label" parent="Button/VBoxContainer"]
+custom_minimum_size = Vector2(0, 73)
+layout_mode = 2
+tooltip_text = "Тут короче описание того, что делает плючик"
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "ЭТО ПЛЮСИК"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Button/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="DebuffLabel" type="Label" parent="Button/VBoxContainer"]
+custom_minimum_size = Vector2(0, 73)
+layout_mode = 2
+tooltip_text = "Тут короче описание негативного перка и всё такое да да"
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Минусик лол"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

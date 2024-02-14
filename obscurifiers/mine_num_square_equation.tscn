@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cydpiuf18visk"]
+
+[ext_resource type="Script" path="res://scripts/MineNumSquareEquation.gd" id="1_kj2d5"]
+
+[node name="MineNumSquareEquation" type="Node"]
+script = ExtResource("1_kj2d5")

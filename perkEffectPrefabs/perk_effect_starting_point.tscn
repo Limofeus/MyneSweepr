@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4hfdfyv74q6"]
+
+[ext_resource type="Script" path="res://scripts/PerkEffectStartingPoint.gd" id="1_gh68y"]
+[ext_resource type="PackedScene" uid="uid://dlerysyj6bwfd" path="res://scenes/notice1.tscn" id="2_kb02g"]
+
+[node name="PerkEffectStartingPoint" type="Node"]
+script = ExtResource("1_gh68y")
+noticePrefab = ExtResource("2_kb02g")

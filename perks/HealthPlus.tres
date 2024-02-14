@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkPlayerStats" load_steps=2 format=3 uid="uid://dt344ljmo2mx4"]
+
+[ext_resource type="Script" path="res://scripts/PerkPlayerStats.gd" id="1_geegp"]
+
+[resource]
+script = ExtResource("1_geegp")
+armorAdd = 0.0
+maxHpAdd = 1.0
+heal = 1.0
+perkLevel = 1
+oneTime = false
+perkName = "HEALTH PLUS"
+perkDescription = "+1 to max HP"
+perkTag = ""

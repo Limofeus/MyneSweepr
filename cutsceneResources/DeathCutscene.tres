@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CutsceneResource" load_steps=2 format=3 uid="uid://cxq1hsyu7h4io"]
+
+[ext_resource type="Script" path="res://scripts/CutsceneResource.gd" id="1_t41yk"]
+
+[resource]
+script = ExtResource("1_t41yk")
+cutsceneLines = Array[String](["[center]U DED..."])
+cutsceneAnimName = "DeathCutscene1"

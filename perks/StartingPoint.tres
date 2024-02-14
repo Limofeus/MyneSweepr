@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkResource" load_steps=3 format=3 uid="uid://b5oejgm184j5a"]
+
+[ext_resource type="PackedScene" uid="uid://d4hfdfyv74q6" path="res://perkEffectPrefabs/perk_effect_starting_point.tscn" id="1_oslou"]
+[ext_resource type="Script" path="res://scripts/PerkResource.gd" id="2_r4an6"]
+
+[resource]
+script = ExtResource("2_r4an6")
+perkLevel = 1
+oneTime = true
+perkName = "STARTING POINT"
+perkDescription = "At the start of each level reveals a random cell with 0 mines nearby"
+perkTag = ""
+reqPerkTags = Array[String]([])
+onStartEffectScene = ExtResource("1_oslou")

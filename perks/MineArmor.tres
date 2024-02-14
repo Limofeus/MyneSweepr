@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PerkPlayerStats" load_steps=2 format=3 uid="uid://c7oafapbwhyo1"]
+
+[ext_resource type="Script" path="res://scripts/PerkPlayerStats.gd" id="1_lpu3l"]
+
+[resource]
+script = ExtResource("1_lpu3l")
+armorAdd = 0.1
+maxHpAdd = 0.0
+heal = 0.0
+perkLevel = 1
+oneTime = true
+perkName = "MINE ARMOR"
+perkDescription = "A special armor, each time you get damaged it will block 0.1 damage"
+perkTag = ""

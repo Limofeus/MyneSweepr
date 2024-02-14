@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PerkFieldSize" load_steps=2 format=3 uid="uid://dpwflev5xqyb5"]
+
+[ext_resource type="Script" path="res://scripts/PerkFieldSize.gd" id="1_7hkfx"]
+
+[resource]
+script = ExtResource("1_7hkfx")
+widthIncrease = 1
+hieghtIncrease = 0
+perkLevel = -1
+oneTime = false
+perkName = "WIDE FIELD"
+perkDescription = "Makes the field one column wider, may add mines"
+perkTag = ""

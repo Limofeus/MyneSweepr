@@ -1,0 +1,636 @@
+[gd_scene load_steps=35 format=3 uid="uid://00ptyd4reagg"]
+
+[ext_resource type="Script" path="res://scripts/GameLogic.gd" id="1_6wla6"]
+[ext_resource type="Script" path="res://scripts/CameraMovement.gd" id="1_eqsfc"]
+[ext_resource type="Script" path="res://scripts/MinefieldLogic.gd" id="1_n5xv5"]
+[ext_resource type="Script" path="res://scripts/PlayerStats.gd" id="2_5jpmv"]
+[ext_resource type="Script" path="res://scripts/MineGeneration.gd" id="2_jmqn1"]
+[ext_resource type="Resource" uid="uid://dnc2d2xw3hg0w" path="res://perks/HealUp.tres" id="3_5sdbk"]
+[ext_resource type="Resource" uid="uid://dclgq3enwof6j" path="res://perks/TallField1.tres" id="3_byoue"]
+[ext_resource type="Resource" uid="uid://dt344ljmo2mx4" path="res://perks/HealthPlus.tres" id="3_clie1"]
+[ext_resource type="Resource" uid="uid://b2ncu5t14ntcp" path="res://perks/MineShift.tres" id="3_eg2kn"]
+[ext_resource type="Resource" uid="uid://dpwflev5xqyb5" path="res://perks/WideField1.tres" id="3_i0llw"]
+[ext_resource type="Resource" uid="uid://cw71ie87bnjc1" path="res://perks/MoreMines1.tres" id="3_lel7s"]
+[ext_resource type="Script" path="res://scripts/FieldNumbersGenerator.gd" id="3_metbh"]
+[ext_resource type="Resource" uid="uid://c7oafapbwhyo1" path="res://perks/MineArmor.tres" id="3_sq0l1"]
+[ext_resource type="PackedScene" uid="uid://dfj7we7yglwwe" path="res://obscurifiers/mine_num_simple.tscn" id="5_k8pct"]
+[ext_resource type="Resource" uid="uid://ckqafdo7bvjeu" path="res://perks/SimpleMath.tres" id="9_d6oaj"]
+[ext_resource type="Resource" uid="uid://cp51hljsb3p4" path="res://perks/SquareEquations.tres" id="9_ktd6q"]
+[ext_resource type="Script" path="res://scripts/PerkSelectScreen.gd" id="11_7yij4"]
+[ext_resource type="Resource" uid="uid://drjyajcow8nkn" path="res://perks/EasyOne.tres" id="11_bekv0"]
+[ext_resource type="PackedScene" uid="uid://dbkewrpyc5wfq" path="res://scenes/perkbutton.tscn" id="11_f67lp"]
+[ext_resource type="Resource" uid="uid://b5oejgm184j5a" path="res://perks/StartingPoint.tres" id="12_3unf1"]
+[ext_resource type="Resource" uid="uid://cgmlwx3aqscdx" path="res://perks/HiddenHealth.tres" id="13_vtoxo"]
+[ext_resource type="Resource" uid="uid://bcp7x8fab3632" path="res://perks/CornerHelp.tres" id="14_i8uox"]
+[ext_resource type="Script" path="res://scripts/TriggerChildEffects.gd" id="18_13ya0"]
+[ext_resource type="PackedScene" uid="uid://bufcq7y2013f2" path="res://scenes/webgl_explosion_particles.tscn" id="18_sit7g"]
+[ext_resource type="Script" path="res://scripts/CutsceneLogic.gd" id="22_do5ja"]
+[ext_resource type="Resource" uid="uid://ctiv7ptagwug3" path="res://cutsceneResources/Cutscene1.tres" id="23_t0yym"]
+[ext_resource type="Resource" uid="uid://cxq1hsyu7h4io" path="res://cutsceneResources/DeathCutscene.tres" id="24_w2f7w"]
+[ext_resource type="FontFile" uid="uid://biett275if5xv" path="res://fonts/Vollda-Bold.otf" id="28_vpfem"]
+
+[sub_resource type="Environment" id="Environment_phea5"]
+background_mode = 3
+background_canvas_max_layer = 1
+glow_enabled = true
+glow_intensity = 1.0
+glow_blend_mode = 0
+glow_hdr_scale = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bobsa"]
+bg_color = Color(0.964706, 0.141176, 0.258824, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Animation" id="Animation_m16wt"]
+resource_name = "Cutscene1"
+length = 39.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 5, 7, 10, 13, 16, 19, 22, 25, 28, 32, 35),
+"transitions": PackedFloat32Array(1, 1e+06, 1, 1e+06, 1, 1e+06, 1, 1e+06, 1, 1e+06, 1, 1e+06),
+"update": 0,
+"values": [0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneLogic")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2, 2, 7, 13, 19, 25, 32, 39),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [0],
+"method": &"SetCutsceneText"
+}, {
+"args": [true],
+"method": &"StartVideo"
+}, {
+"args": [1],
+"method": &"SetCutsceneText"
+}, {
+"args": [2],
+"method": &"SetCutsceneText"
+}, {
+"args": [3],
+"method": &"SetCutsceneText"
+}, {
+"args": [4],
+"method": &"SetCutsceneText"
+}, {
+"args": [5],
+"method": &"SetCutsceneText"
+}, {
+"args": [],
+"method": &"CutsceneEnded"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2, 36, 39),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RichTextLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(32, 36, 38, 39),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.858824, 0.72549, 0.662745, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkipLabel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 2, 30, 35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(0.7, 0.7, 0.7, 1), Color(0.7, 0.7, 0.7, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ra7td"]
+resource_name = "DeathCutscene1"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkipLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.780392, 0.780392, 0.780392, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CutsceneLogic")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0],
+"method": &"SetCutsceneText"
+}, {
+"args": [],
+"method": &"CutsceneEnded"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_kv1xu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkipLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mwfik"]
+_data = {
+"Cutscene1": SubResource("Animation_m16wt"),
+"DeathCutscene1": SubResource("Animation_ra7td"),
+"RESET": SubResource("Animation_kv1xu")
+}
+
+[node name="Main" type="Node"]
+
+[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("minefieldLogic", "perkSelectScreen", "playerStats", "obscurifierHolder", "onStartEffectsHolder")]
+script = ExtResource("1_6wla6")
+perks = Array[Resource("res://scripts/PerkResource.gd")]([ExtResource("3_clie1"), ExtResource("3_5sdbk"), ExtResource("3_sq0l1"), ExtResource("3_eg2kn"), ExtResource("3_lel7s"), ExtResource("3_byoue"), ExtResource("3_i0llw"), ExtResource("9_d6oaj"), ExtResource("9_ktd6q"), ExtResource("11_bekv0"), ExtResource("12_3unf1"), ExtResource("13_vtoxo"), ExtResource("14_i8uox")])
+minefieldLogic = NodePath("../MinefieldHolder/MinefieldLogic")
+perkSelectScreen = NodePath("../UserInterface/PerkSelect/PerkSelectScreen")
+playerStats = NodePath("../PlayerStats")
+obscurifierHolder = NodePath("../MinefieldHolder/FieldNumbersGenerator")
+onStartEffectsHolder = NodePath("../MinefieldHolder/PerkEffects/OnStart")
+
+[node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("cutsceneLogic", "minefieldLogic", "healthLabel", "armorLabel", "timerLabel", "levelLabel", "mineCountLabel", "healthProgressBar")]
+unique_name_in_owner = true
+script = ExtResource("2_5jpmv")
+cutsceneLogic = NodePath("../CutsceneLayer/CutsceneLogic")
+minefieldLogic = NodePath("../MinefieldHolder/MinefieldLogic")
+healthLabel = NodePath("../UserInterface/TopPanel/ProgressBar/Health")
+armorLabel = NodePath("../UserInterface/TopPanel/ArmorLabel")
+timerLabel = NodePath("../UserInterface/TopPanel/Timer")
+levelLabel = NodePath("../UserInterface/TopPanel/CurrentLevel")
+mineCountLabel = NodePath("../UserInterface/TopPanel/MineCount")
+healthProgressBar = NodePath("../UserInterface/TopPanel/ProgressBar")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_phea5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(150, 200)
+
+[node name="CameraMovement" type="Node" parent="Camera2D"]
+script = ExtResource("1_eqsfc")
+moveSpeed = 400.0
+dragSence = 1.0
+zoomSence = 1.1
+
+[node name="MinefieldHolder" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MinefieldLogic" type="Node" parent="MinefieldHolder" node_paths=PackedStringArray("mineGeneration", "fieldNumberGenerator", "playerStats", "gameLogic", "hiddenLayer", "shownLayer", "backgroundContainer", "buttonContainer")]
+unique_name_in_owner = true
+script = ExtResource("1_n5xv5")
+fieldHieght = 9
+fieldWidth = 9
+mineCount = 10.0
+mineGeneration = NodePath("../MineGeneration")
+fieldNumberGenerator = NodePath("../FieldNumbersGenerator")
+playerStats = NodePath("../../PlayerStats")
+gameLogic = NodePath("../../GameLogic")
+hiddenLayer = NodePath("../HiddenLayer")
+shownLayer = NodePath("../ShownLayer")
+backgroundContainer = NodePath("../BackgroundContainer")
+buttonContainer = NodePath("../ButtonContainer")
+explosionPrefab = ExtResource("18_sit7g")
+
+[node name="MineGeneration" type="Node" parent="MinefieldHolder" node_paths=PackedStringArray("minefieldLogic", "hiddenLayer")]
+script = ExtResource("2_jmqn1")
+minefieldLogic = NodePath("../MinefieldLogic")
+hiddenLayer = NodePath("../HiddenLayer")
+
+[node name="FieldNumbersGenerator" type="Node" parent="MinefieldHolder" node_paths=PackedStringArray("backgroundContainer", "minefieldLogic")]
+script = ExtResource("3_metbh")
+backgroundContainer = NodePath("../BackgroundContainer")
+minefieldLogic = NodePath("../MinefieldLogic")
+
+[node name="MineNumSimple" parent="MinefieldHolder/FieldNumbersGenerator" instance=ExtResource("5_k8pct")]
+
+[node name="MineNumSimple2" parent="MinefieldHolder/FieldNumbersGenerator" instance=ExtResource("5_k8pct")]
+
+[node name="PerkEffects" type="Node" parent="MinefieldHolder"]
+
+[node name="OnStart" type="Node" parent="MinefieldHolder/PerkEffects"]
+script = ExtResource("18_13ya0")
+
+[node name="BackgroundContainer" type="GridContainer" parent="MinefieldHolder"]
+layout_mode = 0
+offset_right = 308.0
+offset_bottom = 308.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="HiddenLayer" type="Control" parent="MinefieldHolder"]
+texture_filter = 4
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ButtonContainer" type="GridContainer" parent="MinefieldHolder"]
+layout_mode = 0
+offset_right = 308.0
+offset_bottom = 308.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="ShownLayer" type="Control" parent="MinefieldHolder"]
+unique_name_in_owner = true
+texture_filter = 4
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="MinefieldHolder"]
+layout_mode = 1
+offset_left = -375.0
+offset_top = 20.0
+offset_right = -17.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 20
+text = "LMB - Open cell
+RMB - Flag cell
+Middle mouse / WASD - Move around
+Mouse wheel - Zoom"
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+
+[node name="TopPanel" type="Panel" parent="UserInterface"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="UserInterface/TopPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -25.0
+offset_right = 375.0
+offset_bottom = 25.0
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_bobsa")
+max_value = 3.0
+value = 2.6
+show_percentage = false
+
+[node name="Health" type="Label" parent="UserInterface/TopPanel/ProgressBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -29.0
+offset_right = 152.0
+offset_bottom = 29.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "HP: 2.75/10"
+vertical_alignment = 1
+
+[node name="Timer" type="Label" parent="UserInterface/TopPanel"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.5
+offset_top = -55.0
+offset_right = 76.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 55
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentLevel" type="Label" parent="UserInterface/TopPanel"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.5
+offset_top = 10.0
+offset_right = 76.5
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArmorLabel" type="Label" parent="UserInterface/TopPanel"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 380.0
+offset_top = -30.0
+offset_right = 472.0
+offset_bottom = 1.00002
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+
+[node name="MineCount" type="Label" parent="UserInterface/TopPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -193.0
+offset_top = -26.0
+offset_right = -25.0
+offset_bottom = 26.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "MINES: 10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PerkSelect" type="ColorRect" parent="UserInterface"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.745098)
+
+[node name="PerkSelectScreen" type="Node" parent="UserInterface/PerkSelect" node_paths=PackedStringArray("gameLogic", "perkButtonContainer")]
+script = ExtResource("11_7yij4")
+gameLogic = NodePath("../../../GameLogic")
+perkButtonContainer = NodePath("../HBoxContainer")
+perkButtonPreffab = ExtResource("11_f67lp")
+
+[node name="Label" type="Label" parent="UserInterface/PerkSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.5
+offset_top = -199.107
+offset_right = 247.5
+offset_bottom = -100.892
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "LEVEL COMPLETE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UserInterface/PerkSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.5
+offset_top = 126.0
+offset_right = 247.5
+offset_bottom = 224.215
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "Select a perk"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/PerkSelect"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="CutsceneLayer" type="CanvasLayer" parent="."]
+
+[node name="CutsceneLogic" type="Node" parent="CutsceneLayer" node_paths=PackedStringArray("playerStats", "cutsceneLayer", "cutsceneTextObj", "animationPlayer", "videoStreamPlayer", "audioStreamPlayer")]
+script = ExtResource("22_do5ja")
+playerStats = NodePath("../../PlayerStats")
+cutsceneLayer = NodePath("..")
+cutsceneTextObj = NodePath("../RichTextLabel")
+animationPlayer = NodePath("../AnimationPlayer")
+videoStreamPlayer = NodePath("../VideoPlayerClipping/VideoStreamPlayer")
+audioStreamPlayer = NodePath("../AudioStreamPlayer")
+cutsceneResources = Array[Resource("res://scripts/CutsceneResource.gd")]([ExtResource("23_t0yym"), ExtResource("24_w2f7w")])
+
+[node name="ColorRect" type="ColorRect" parent="CutsceneLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CutsceneLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = 51.0
+offset_right = 300.0
+offset_bottom = 301.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/normal_font = ExtResource("28_vpfem")
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "[center]This is some test of some random thing idk"
+visible_characters = 0
+visible_characters_behavior = 1
+visible_ratio = 0.0
+
+[node name="VideoPlayerClipping" type="Control" parent="CutsceneLayer"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -272.0
+offset_right = 200.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CutsceneLayer/VideoPlayerClipping"]
+texture_filter = 2
+texture_repeat = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+expand = true
+
+[node name="SkipLabel" type="Label" parent="CutsceneLayer"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -246.0
+offset_top = -39.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Space - Skip MyneSweepr lore"
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CutsceneLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_mwfik")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CutsceneLayer"]
